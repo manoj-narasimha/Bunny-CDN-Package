@@ -5,12 +5,16 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 class BunnyCDNClient {
-  final String storageZoneRegion; // e.g. "sg" for Singapore or "ny" for New York
+  final String
+      storageZoneRegion; // e.g. "sg" for Singapore or "ny" for New York
   final String storageZone;
   final String accessKey;
   late final String endpoint;
 
-  BunnyCDNClient({required this.storageZone, required this.accessKey, this.storageZoneRegion = ""}) {
+  BunnyCDNClient(
+      {required this.storageZone,
+      required this.accessKey,
+      this.storageZoneRegion = ""}) {
     endpoint = storageZoneRegion.isEmpty
         ? "https://storage.bunnycdn.com"
         : "https://$storageZoneRegion.storage.bunnycdn.com";
@@ -42,9 +46,10 @@ class BunnyCDNClient {
       return null;
     }
   }
-  
+
   // Upload a file to BunnyCDN
-  Future<bool> uploadFile(String fileName, List<int> fileBytes, {String path = ""}) async {
+  Future<bool> uploadFile(String fileName, List<int> fileBytes,
+      {String path = ""}) async {
     try {
       final url = Uri.parse("$endpoint/$storageZone/$path$fileName");
       final response = await http.put(
@@ -65,7 +70,8 @@ class BunnyCDNClient {
   }
 
   // Download a file from BunnyCDN
-  Future<bool> downloadFile(String fileName, String savePath, {String path = ""}) async {
+  Future<bool> downloadFile(String fileName, String savePath,
+      {String path = ""}) async {
     /*
     The directory path to your file. If this is the root of your storage zone, 
     you can ignore this parameter.
@@ -111,4 +117,3 @@ class BunnyCDNClient {
     }
   }
 }
-
