@@ -1,0 +1,18 @@
+name: bunny_cdn
+description: A Dart package for interacting with Bunny.net CDN storage.
+version: 1.0.0
+repository: https://github.com/yourusername/bunny_cdn
+homepage: https://pub.dev/packages/bunny_cdn
+issue_tracker: https://github.com/yourusername/bunny_cdn/issues
+documentation: https://github.com/yourusername/bunny_cdn/wiki
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+# Add regular dependencies here.
+dependencies:
+  http: ^1.3.0
+
+dev_dependencies:
+  test: ^1.21.0
+  lints: ^2.0.0
